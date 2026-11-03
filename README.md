@@ -168,6 +168,8 @@ Implementa el método siguiendo este orden. En cuanto algo falle, llama a `mostr
 
 > ❓ ¿Por qué limitar la edad a 30 evita también el desbordamiento que viste en el Paso 1?
 
+Al restringir la entrada máxima a 30, la multiplicacion más alta posible en tu código será 30 * 7 = 210. Este resultado está muy por debajo del límite máximo que soporta una variable int en Java (2.147.483.647), haciendo que sea totalmente imposible provocar el desbordamiento (overflow) que ocurría al escribir números enormes como 400.000.000.
+
 ## Paso 11 · Vuelve a probar
 
 Comprueba que **la app nunca se cierra**:
