@@ -131,6 +131,8 @@ resultText = findViewById(R.id.result_text);
 
 > ❓ ¿Qué pasaría si dejaras `EditText ageEdit = findViewById(...)` dentro de `onCreate()`?
 
+Si dejamos esto, estarimos creando una varibale local que se llama igual, pero que solo existe dentro de ese bloque. El atributo de la clase que quedaría vacío, null, y cuando en los siguientes pasos intentes usar ageEdit desde otro método distinto, la aplicación se cerraría de golpe con un error NullPointerException
+
 ## Paso 8 · Saca la lógica del botón a un método
 
 El `setOnClickListener` debe quedar así de corto:
