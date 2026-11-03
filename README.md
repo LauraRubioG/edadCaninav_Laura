@@ -31,17 +31,20 @@ Al terminar sabrás:
 
 Antes de arreglar nada, comprueba qué falla. Prueba estas entradas y anota qué pasa:
 
-| Entrada | ¿Qué ocurre? |
-|---|---|
-| *(campo vacío)* | |
-| `abc` | |
-| `3.5` | |
-| `0` | |
-| `-4` | |
-| `99999999999` | |
-| `400000000` | |
+| Entrada | ¿Qué ocurre?                         |
+|---|--------------------------------------|
+| *(campo vacío)* | Se cierra la app                     |
+| `abc` | Se cierra la app                     |
+| `3.5` | Se cierra la app                     |
+| `0` | Te dice que tendria 0 años           |
+| `-4` | Te dice que tendria -28 años         |
+| `99999999999` | Se cierra la app                     |
+| `400000000` | Te dice que tendria -1494967295 años |
 
 > 💡 Cuando la app se cierre, abre el **Logcat** y busca la excepción. ¿Qué método la lanza? ¿Por qué el último caso no cierra la app pero da un resultado absurdo?
+
+El métono que nos lanza la excepcion es el de Integer.parseInt(). Ocurre exactamente en la linea del archivo MainActivity.java, porqeu  no sabe cómo convertir un texto vacío o letras en un número matemático.
+400000000 da un resultado absurdo porque ocurre un desbordamiento de memoria. Las variables de tipo int en Java tienen un límite. Al multiplicar 400000000 por 7, el resultado supera el limite. Cuando un int se pasa del limite, en lugar de dar error, da la vuelta y empieza a contar desde los números negativos más bajos.
 
 ## Paso 2 · Crea la rama de trabajo
 
