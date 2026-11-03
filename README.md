@@ -76,6 +76,11 @@ En `res/values/strings.xml` añade tres textos nuevos:
 
 > ❓ ¿Qué significan `%1$d` y `%2$d`? ¿En qué orden se rellenan?
 
+ Son marcadores de posición que sirenn para insertar números enteros dentro de una cadena de texto (la letra d viene de dígito o decimal)
+
+El orden lo marca el propio n´mero: %1$d se rellenará con el primer valor que el enviemos desde el código Java, es decir la edad mínima y %2$d se rellenará con el segundo valor, la edad máxima
+
+
 ## Paso 5 · Restringe la entrada desde el layout
 
 En el `EditText` (`@+id/age_input`) añade:
