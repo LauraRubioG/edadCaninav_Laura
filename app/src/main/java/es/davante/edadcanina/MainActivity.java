@@ -29,14 +29,16 @@ public class MainActivity extends AppCompatActivity {
 
 
         // Implementar el boton (setOnClickListener)
-        button1.setOnClickListener(view -> {
-
-            String ageString = ageEdit.getText().toString();
-            int age = Integer.parseInt(ageString);
-            int dogAge = age * FACTOR_CANINO;
-            resultText.setText(getString(R.string.tu_edad_format, dogAge));
-        });
+        button1.setOnClickListener(view -> calcularEdad());
 
 
     }
+
+    private void calcularEdad() {
+        String ageString = ageEdit.getText().toString();
+        int age = Integer.parseInt(ageString);
+        int dogAge = age * FACTOR_CANINO;
+        resultText.setText(getString(R.string.tu_edad_format, dogAge));
+    }
+
 }
