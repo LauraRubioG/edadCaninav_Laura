@@ -193,6 +193,7 @@ git add .
 git commit -m "Validación de la entrada y control de errores aritméticos"
 git push -u origin v2-validacion
 ```
+listo
 
 Comprueba en GitHub que tu fork tiene ahora dos ramas: `main` y `v2-validacion`.
 
