@@ -184,6 +184,8 @@ Comprueba que **la app nunca se cierra**:
 
 > 💡 Con el teclado numérico no puedes escribir `abc` ni `-4`. ¿Cómo comprobarías que el `try/catch` funciona? (Pista: quita `inputType` un momento.)
 
+Para comprobar que el catch (NumberFormatException e) realmente está haciendo su trabajo, debemos ir al archivo activity_main.xml, borrar o comentar temporalmente la línea android:inputType="number" y volver a ejecutar la aplicación en el emulador. Al quitar esto, Android te permitirá usar el teclado alfanumérico completo. Si escribimos abc y pulsamos el botón, veremos que la app ya no se rompe como en el Paso 1, sino que el catch lo detecta y muestra correctamente tu mensaje de "Introduce un número entero válido"
+
 ## Paso 12 · Guarda y sube tu trabajo
 
 ```bash
