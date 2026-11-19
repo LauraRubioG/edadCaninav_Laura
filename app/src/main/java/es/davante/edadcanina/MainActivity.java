@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Creamos la instancia del modelo que gestionará los datos y reglas
         modelo = new EdadCaninaModelo();
+        // Conectamos el modelo con el layout para que los enlaces @{...} y @={...} funcionen.
+        binding.setModelo(modelo);
         // Implementar el boton (setOnClickListener)
         binding.btnCalc.setOnClickListener(view -> calcularEdad());
     }
@@ -88,24 +90,32 @@ public class MainActivity extends AppCompatActivity {
          */
         //-----------------------------------------------------------------------------------------------
 
+        /*PASO 4 NO BORRAMOS COMENTAMOS
+        quitamos el modelo.setEdadTexto(binding.ageInput.getText().toString());
         // Pasamos la entrada al modelo y delegamos en él la validación y el cálculo
         modelo.setEdadTexto(binding.ageInput.getText().toString());
+        */
         Validacion resultado = modelo.calcular();
 
         // La Activity solo traduce el resultado del modelo a elementos visuales
         switch (resultado) {
             case OK:
                 binding.ageInput.setError(null);
-                binding.resultText.setText(getString(R.string.tu_edad_format, modelo.getEdadHumana()));
+                //binding.resultText.setText(getString(R.string.tu_edad_format, modelo.getEdadHumana()));
                 break;
             case VACIO:
                 mostrarError(getString(R.string.error_vacio));
+                //mostrarError(getString(R.string.error_vacio));
                 break;
             case NO_ES_NUMERO:
                 mostrarError(getString(R.string.error_no_numero));
+                //mostrarError(getString(R.string.error_no_numero));
                 break;
             case FUERA_DE_RANGO:
                 mostrarError(getString(R.string.error_rango,
+                        EdadCaninaModelo.EDAD_MINIMA,
+                        EdadCaninaModelo.EDAD_MAXIMA));
+                //mostrarError(getString(R.string.error_rango,
                         EdadCaninaModelo.EDAD_MINIMA,
                         EdadCaninaModelo.EDAD_MAXIMA));
                 break;
@@ -120,9 +130,10 @@ public class MainActivity extends AppCompatActivity {
 
         // 2. Poner el foco en el EditText (requestFocus)
         binding.ageInput.requestFocus();
-
+        /*PASO 4: NO BORRAMOS COMENTAMOS
         // 3. Borrar el resultado anterior del TextView
         binding.resultText.setText("");
+        */
     }
 
 }
