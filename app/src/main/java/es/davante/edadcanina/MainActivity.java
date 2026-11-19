@@ -1,42 +1,54 @@
 package es.davante.edadcanina;
 
 import android.os.Bundle;
+/*NO BORRAMOS COMENTAMOS
+estas clases ya lo has usamos, y dejarlas sería ensuciar el código
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
+*/
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
+
+import es.davante.edadcanina.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int FACTOR_CANINO = 7;
     private static final int EDAD_MINIMA = 1;
     private static final int EDAD_MAXIMA = 30; // ningún perro supera esta edad
+
+    /* EN VEZ DE BORRAR COMENTAMOS
+    estas variables ya no nos hace falta porque borramos los findViewById
     private EditText ageEdit;
     private TextView resultText;
+    */
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
+        /*EN VEZ DE BORRAR COMENTAMOS
+        en vez de llamarlo por findViewById los llamamos por binding
         // Declaramos variables
         ageEdit = findViewById(R.id.age_input);
         resultText = findViewById(R.id.result_text);
         Button button1 = findViewById(R.id.btn_calc);
-
+        */
 
         // Implementar el boton (setOnClickListener)
-        button1.setOnClickListener(view -> calcularEdad());
+        binding.btnCalc.setOnClickListener(view -> calcularEdad());
 
 
     }
 
     private void calcularEdad() {
         // 1. Leer el texto del EditText quitando espacios
-        String ageString = ageEdit.getText().toString().trim();
+        String ageString = binding.ageInput.getText().toString().trim();
 
         // 2. ¿Está vacío?
         if (ageString.isEmpty()) {
@@ -60,20 +72,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         // 5. Todo correcto
-        ageEdit.setError(null);
+        binding.ageInput.setError(null);
         int dogAge = age * FACTOR_CANINO;
-        resultText.setText(getString(R.string.tu_edad_format, dogAge));
+        binding.resultText.setText(getString(R.string.tu_edad_format, dogAge));
     }
 
     private void mostrarError(String mensaje) {
         // 1. Mostrar el mensaje en el EditText (setError)
-        ageEdit.setError(mensaje);
+        binding.ageInput.setError(mensaje);
 
         // 2. Poner el foco en el EditText (requestFocus)
-        ageEdit.requestFocus();
+        binding.ageInput.requestFocus();
 
         // 3. Borrar el resultado anterior del TextView
-        resultText.setText("");
+        binding.resultText.setText("");
     }
 
 }
