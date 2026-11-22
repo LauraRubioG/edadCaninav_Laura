@@ -13,6 +13,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import es.davante.edadcanina.controlador.EdadCaninaControlador;
 import es.davante.edadcanina.databinding.ActivityMainBinding;
 //IMPORTAMOS LAS CLASES QUE ACABAMOS DE CREAR PARA USARLAS AQUI EN EL MAINACTIVITY
 import es.davante.edadcanina.modelo.EdadCaninaModelo;
@@ -34,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
     */
     //-----------------------------------------------------------------------------------------------------------
     private ActivityMainBinding binding;
-    private EdadCaninaModelo modelo;
+    //PASO 6: QUITAMOS MODELO
+    //private EdadCaninaModelo modelo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +54,21 @@ public class MainActivity extends AppCompatActivity {
         */
         //----------------------------------------------------------------------------------------
 
+        /*PASO 6: REEMPLAZAMOS ESTO POR LO SIGUIENTE
         //Creamos la instancia del modelo que gestionará los datos y reglas
         modelo = new EdadCaninaModelo();
+        */
+        // Creamos el modelo y el controlador y los conectamos con la vista
+        EdadCaninaModelo modelo = new EdadCaninaModelo();
+        EdadCaninaControlador controlador = new EdadCaninaControlador(modelo);
         // Conectamos el modelo con el layout para que los enlaces @{...} y @={...} funcionen.
         binding.setModelo(modelo);
+
+        /* PASO 6: CAMBIAMOS POR EL CONTROLADOR
         // Implementar el boton (setOnClickListener)
         binding.btnCalc.setOnClickListener(view -> modelo.calcular());
+         */
+        binding.setControlador(controlador);
     }
 
 

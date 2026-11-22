@@ -93,5 +93,18 @@ public class EdadCaninaModeloTest {
         assertTrue(avisoEdadHumana[0]);
         assertTrue(avisoValidacion[0]);
     }
+    //PASO 6:
+    // Test 8: comprueba que limpiar() borra texto, resultado y estado de validación.
+    @Test
+    public void limpiar_reseteaEstadoInicial() {
+        modelo.setEdadTexto("6");
+        modelo.calcular();
+
+        modelo.limpiar();
+
+        assertEquals("", modelo.getEdadTexto());
+        assertEquals(0, modelo.getEdadHumana());
+        assertEquals(Validacion.SIN_CALCULAR, modelo.getValidacion());
+    }
 
 }
