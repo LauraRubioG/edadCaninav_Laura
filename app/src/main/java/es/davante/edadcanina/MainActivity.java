@@ -57,9 +57,11 @@ public class MainActivity extends AppCompatActivity {
         // Conectamos el modelo con el layout para que los enlaces @{...} y @={...} funcionen.
         binding.setModelo(modelo);
         // Implementar el boton (setOnClickListener)
-        binding.btnCalc.setOnClickListener(view -> calcularEdad());
+        binding.btnCalc.setOnClickListener(view -> modelo.calcular());
     }
 
+
+    /*PASO 5: LIMPIAMOS EL MAINACTIVITY BORRANDO LOS METODOS CALCULAReDAD() Y MOSTRARERROR()
     private void calcularEdad() {
         //-------------------------------------------------------------------------------------------
         /* NO BORRAMOS COMENTAMOS PASO 3
@@ -95,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         // Pasamos la entrada al modelo y delegamos en él la validación y el cálculo
         modelo.setEdadTexto(binding.ageInput.getText().toString());
         */
+    /*
         Validacion resultado = modelo.calcular();
 
         // La Activity solo traduce el resultado del modelo a elementos visuales
@@ -132,6 +135,6 @@ public class MainActivity extends AppCompatActivity {
         // 3. Borrar el resultado anterior del TextView
         binding.resultText.setText("");
         */
-    }
+    //}
 
 }

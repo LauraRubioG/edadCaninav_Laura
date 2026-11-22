@@ -64,6 +64,7 @@
         android:gravity="center"
         android:importantForAutofill="no"
         android:text="@={modelo.edadTexto}"
+        app:errorValidacion="@{modelo.validacion}"
         />
 
     <!-- PASO 4: Se pinta solo al calcular y usa INVISIBLE (no GONE)-->
