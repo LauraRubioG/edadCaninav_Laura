@@ -116,8 +116,6 @@ public class MainActivity extends AppCompatActivity {
                         EdadCaninaModelo.EDAD_MINIMA,
                         EdadCaninaModelo.EDAD_MAXIMA));
                 //mostrarError(getString(R.string.error_rango,
-                        EdadCaninaModelo.EDAD_MINIMA,
-                        EdadCaninaModelo.EDAD_MAXIMA));
                 break;
             default:
                 break;

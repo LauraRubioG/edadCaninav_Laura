@@ -90,8 +90,12 @@ public class EdadCaninaModelo extends BaseObservable {
 
         // 1. Comprobamos si está vacío.
         if (textoLimpio.isEmpty()) {
+            /* LO CAMBIAMOS Y SUSTITUIMOS POR LOS SETTER
             edadHumana = 0;
             validacion = Validacion.VACIO;
+             */
+            setEdadHumana(0);
+            setValidacion(Validacion.VACIO);
             return validacion;
         }
 
@@ -100,20 +104,32 @@ public class EdadCaninaModelo extends BaseObservable {
         try {
             edadPerro = Integer.parseInt(textoLimpio);
         } catch (NumberFormatException e) {
+            /* LO CAMBIAMOS Y SUSTITUIMOS POR LOS SETTER
             edadHumana = 0;
             validacion = Validacion.NO_ES_NUMERO;
+             */
+            setEdadHumana(0);
+            setValidacion(Validacion.NO_ES_NUMERO);
             return validacion;
         }
         // 3. Comprobamos que esté dentro del rango lógico de vida de un perro
         if (edadPerro < EDAD_MINIMA || edadPerro > EDAD_MAXIMA) {
+            /* LO CAMBIAMOS Y SUSTITUIMOS POR LOS SETTER
             edadHumana = 0;
             validacion = Validacion.FUERA_DE_RANGO;
+            */
+            setEdadHumana(0);
+            setValidacion(Validacion.FUERA_DE_RANGO);
             return validacion;
         }
 
         // 4. Si pasa todas las validaciones, calculamos y marcamos como listo
+        /* LO CAMBIAMOS Y SUSTITUIMOS POR LOS SETTER
         edadHumana = edadPerro * FACTOR_CANINO;
         validacion = Validacion.OK;
+        */
+        setEdadHumana(edadPerro * FACTOR_CANINO);
+        setValidacion(Validacion.OK);
         return validacion;
     }
 }
