@@ -206,3 +206,22 @@ Comprueba en GitHub que tu fork tiene ahora dos ramas: `main` y `v2-validacion`.
 - [ ] No quedan números mágicos en `MainActivity`.
 - [ ] `onCreate()` solo prepara la pantalla; la lógica está en `calcularEdad()`.
 - [ ] El trabajo está en la rama `v2-validacion`, no en `main`.
+
+---
+
+## 🚀 Versión 3 (`v3-mvc`) · Arquitectura MVC y DataBinding
+
+En esta rama se ha refactorizado la aplicación aplicando el patrón **Modelo-Vista-Controlador (MVC)** y **DataBinding**, eliminando por completo `findViewById`, `setText`, `setError` y `setOnClickListener` de `MainActivity`.
+
+### Estructura de paquetes
+* `es.davante.edadcanina` → `MainActivity`: actúa únicamente como punto de montaje creando el modelo y el controlador y conectándolos con el `binding`.
+* `es.davante.edadcanina.modelo` → `EdadCaninaModelo` (hereda de `BaseObservable`) y `Validacion`: gestionan el estado, las validaciones y el cálculo de forma independiente de Android.
+* `es.davante.edadcanina.vista` → `AdaptadoresVista`: contiene el `@BindingAdapter("errorValidacion")` para mostrar y limpiar los errores directamente desde el XML.
+* `es.davante.edadcanina.controlador` → `EdadCaninaControlador`: gestiona las acciones de los botones **Calcular** y **Limpiar**.
+
+### Mejoras implementadas
+* **Enlace bidireccional (`@={...}`):** el texto del `EditText` se sincroniza automáticamente con el modelo y caduca el resultado anterior al editarlo.
+* **Vista reactiva (`@{...}`):** el resultado y su visibilidad (`VISIBLE` / `INVISIBLE`) se actualizan solos mediante `notifyPropertyChanged`.
+* **Botón Limpiar:** restablece el campo de entrada, oculta el resultado y elimina cualquier error activo.
+* **Pruebas unitarias (`EdadCaninaModeloTest`):** 8 tests con JUnit que validan cálculos, límites de rango, errores, notificaciones de `BaseObservable` y el reseteo de `limpiar()` sin necesidad de emulador.
+* **Control de versiones:** evolución completa etiquetada desde `paso-1` hasta `paso-7`.
